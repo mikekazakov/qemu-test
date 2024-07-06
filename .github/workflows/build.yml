@@ -16,7 +16,7 @@ jobs:
           brew install qemu
           brew install colima
           colima start --network-address --arch arm64 --vm-type=qemu
-   - uses: actions/upload-artifact@v4
+    - uses: actions/upload-artifact@v4
       with:
         name: colima-logs
         path: /Users/runner/.colima/_lima/colima/*.log
