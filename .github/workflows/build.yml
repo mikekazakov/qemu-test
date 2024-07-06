@@ -16,8 +16,10 @@ jobs:
           brew install qemu
           brew install colima
           colima start --network-address --arch arm64 --vm-type=qemu
-
-
+   - uses: actions/upload-artifact@v4
+      with:
+        name: colima-logs
+        path: /Users/runner/.colima/_lima/colima/*.log
 
 #         brew unlink colima
 #         curl -L -o /usr/local/bin/colima https://github.com/abiosoft/colima/releases/download/v0.5.6/colima-Darwin-x86_64 && sudo chmod +x /usr/local/bin/colima
