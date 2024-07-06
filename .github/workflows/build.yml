@@ -7,6 +7,7 @@ jobs:
   test:
     runs-on: macos-14
     steps:
+    - uses: actions/checkout@v4
     - name: run
       run: |
           find /usr/local/bin -lname '*/Library/Frameworks/Python.framework/*' -delete
@@ -20,6 +21,7 @@ jobs:
           which limactl
           file $(which limactl)
           sysctl sysctl.proc_translated
+          cp -f ./limactl /usr/local/Cellar/lima/0.22.0/bin/limactl
           colima start --network-address --arch arm64 --vm-type=qemu
     - uses: actions/upload-artifact@v4
       if: always()
