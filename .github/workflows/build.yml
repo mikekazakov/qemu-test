@@ -15,6 +15,11 @@ jobs:
           brew install docker
           brew install qemu
           brew install colima
+          uname -rsm
+          sw_vers
+          which limactl
+          file $(which limactl)
+          sysctl sysctl.proc_translated
           colima start --network-address --arch arm64 --vm-type=qemu
     - uses: actions/upload-artifact@v4
       if: always()
