@@ -22,8 +22,8 @@ jobs:
           file $(which limactl)
           sysctl sysctl.proc_translated
           # cp -f ./limactl /opt/homebrew/Cellar/lima/0.22.0/bin/limactl
-          curl -L -o /opt/homebrew/Cellar/lima/0.22.0/bin/limactl https://github.com/mikekazakov/lima-nohvf/raw/master/limactl
-          chmod +x /opt/homebrew/Cellar/lima/0.22.0/bin/limactl
+          sudo curl -L -o /opt/homebrew/Cellar/lima/0.22.0/bin/limactl https://github.com/mikekazakov/lima-nohvf/raw/master/limactl
+          sudo chmod +x /opt/homebrew/Cellar/lima/0.22.0/bin/limactl
           colima start --network-address --arch arm64 --vm-type=qemu
     - name: startup docker containers
       run: |
