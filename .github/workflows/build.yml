@@ -25,6 +25,7 @@ jobs:
         brew uninstall --ignore-dependencies lima
         curl https://raw.githubusercontent.com/Homebrew/homebrew-core/45464b6c4788a80be3f131ab5e2a4468cdfa960c/Formula/l/lima.rb > lima.rb
         unset HOMEBREW_FORBID_PACKAGES_FROM_PATHS
+        export HOMEBREW_DEVELOPER=1
         brew install lima.rb   
         # cp -f ./limactl /opt/homebrew/Cellar/lima/0.22.0/bin/limactl
         # sudo curl -L -o /opt/homebrew/Cellar/lima/0.22.0/bin/limactl https://github.com/mikekazakov/lima-nohvf/raw/master/limactl
