@@ -24,7 +24,7 @@ jobs:
         # specifically install an outdated version of lima - 0.23.2 as with 1.0.1 there are network connectivity issues
         brew uninstall --ignore-dependencies lima
         curl https://raw.githubusercontent.com/Homebrew/homebrew-core/45464b6c4788a80be3f131ab5e2a4468cdfa960c/Formula/l/lima.rb > lima.rb
-        export HOMEBREW_FORBID_PACKAGES_FROM_PATHS=0
+        unset HOMEBREW_FORBID_PACKAGES_FROM_PATHS
         brew install lima.rb   
         # cp -f ./limactl /opt/homebrew/Cellar/lima/0.22.0/bin/limactl
         # sudo curl -L -o /opt/homebrew/Cellar/lima/0.22.0/bin/limactl https://github.com/mikekazakov/lima-nohvf/raw/master/limactl
