@@ -5,16 +5,16 @@ on:
 
 jobs:
   test:
-    runs-on: macos-14
+    runs-on: macos-15
     steps:
     - uses: actions/checkout@v4
     - name: startup docker
       run: |
           find /usr/local/bin -lname '*/Library/Frameworks/Python.framework/*' -delete
           sudo rm -rf /Library/Frameworks/Python.framework/
-          brew update
-          brew install docker
+          brew update          
           brew install qemu
+          brew install docker
           brew install colima
           uname -rsm
           sw_vers
@@ -22,8 +22,10 @@ jobs:
           file $(which limactl)
           sysctl sysctl.proc_translated
           # cp -f ./limactl /opt/homebrew/Cellar/lima/0.22.0/bin/limactl
-          sudo curl -L -o /opt/homebrew/Cellar/lima/0.22.0/bin/limactl https://github.com/mikekazakov/lima-nohvf/raw/master/limactl
-          sudo chmod +x /opt/homebrew/Cellar/lima/0.22.0/bin/limactl
+#          sudo curl -L -o /opt/homebrew/Cellar/lima/0.22.0/bin/limactl https://github.com/mikekazakov/lima-nohvf/raw/master/limactl
+#          sudo chmod +x /opt/homebrew/Cellar/lima/0.22.0/bin/limactl
+          LIMACTL_PATH=$(brew --prefix)/bin/limactl
+          sudo curl -L -o $LIMACTL_PATH https://github.com/mikekazakov/lima-nohvf/raw/master/limactl && sudo chmod +x $LIMACTL_PATH
           colima start --network-address --arch arm64 --vm-type=qemu
     - name: startup docker containers
       run: |
